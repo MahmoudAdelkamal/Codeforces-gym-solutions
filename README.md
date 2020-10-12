@@ -1,2 +1,2 @@
 # Codeforces-gym-solutions
-My solutions to some of codeforces gyms 
+My solutions for some codeforces gyms 

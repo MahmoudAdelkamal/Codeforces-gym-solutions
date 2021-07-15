@@ -20,8 +20,7 @@ int main()
     {
         int t,p;
         cin>>t>>p;
-        if(t!=1)
-            st.erase({v[t],t});
+        st.erase({v[t],t});
         v[t].first++;
         v[t].second-=p;
         if(t==1)

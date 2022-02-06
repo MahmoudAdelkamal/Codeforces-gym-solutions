@@ -1,0 +1,40 @@
+#pragma GCC optimize ("O3")
+#include <bits/stdc++.h>
+#define Mayet ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
+#define ll long long
+#define ld long double
+#define ff first
+#define ss second
+#define inf 1e9+1
+using namespace  std ;
+const int N = 1e3+5;
+int a[N][N];
+int main()
+{
+    Mayet
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int n,m,ans = 0;
+        cin>>n>>m;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+                cin>>a[i][j];
+        }
+        for(int i=0;i<n-1;i++)
+        {
+            map<int,int>mp;
+            for(int j=0;j<m;j++)
+                mp[a[i][j]]++;
+            for(int j=0;j<m;j++)
+            {
+                if(mp[a[i+1][j]])
+                    ans++,mp[a[i+1][j]]--;
+            }
+        }
+        cout<<ans<<'\n';
+    }
+    return 0;
+}

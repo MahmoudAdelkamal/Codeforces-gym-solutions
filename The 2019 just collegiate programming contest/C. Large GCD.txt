@@ -1,0 +1,28 @@
+#pragma GCC optimize ("O3")
+#include <bits/stdc++.h>
+#define Mayet ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
+#define ll long long
+#define ld long double
+#define ff first
+#define ss second
+#define inf 1e9+1
+using namespace  std ;
+
+
+
+int main()
+{
+    Mayet
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int n,m;
+        cin>>n>>m;
+        if(n%2==0 || m%2==0)
+            cout<<2<<endl;
+        else
+            cout<<12<<endl;
+    }
+    return 0;
+}

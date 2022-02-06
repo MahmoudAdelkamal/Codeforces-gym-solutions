@@ -1,0 +1,27 @@
+#pragma GCC optimize ("O3")
+#include <bits/stdc++.h>
+#define Mayet ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
+#define ll long long
+#define ld long double
+#define ff first
+#define ss second
+#define inf 1e9+1
+using namespace  std ;
+
+int main()
+{
+    Mayet
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int x1,y1,x2,y2,ans = 0;
+        cin>>x1>>y1>>x2>>y2;
+        ans+= abs(x1-x2)+ abs(y1-y2);
+        cout<<ans<<endl;
+    }
+
+
+
+    return 0;
+}

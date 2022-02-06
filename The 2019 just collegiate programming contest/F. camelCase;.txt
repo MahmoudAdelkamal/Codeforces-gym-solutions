@@ -1,0 +1,35 @@
+#pragma GCC optimize ("O3")
+#include <bits/stdc++.h>
+#define Mayet ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
+#define ll long long
+#define ld long double
+#define ff first
+#define ss second
+#define inf 1e9+1
+using namespace  std ;
+
+int main()
+{
+    Mayet
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        string s;
+        cin>>s;
+        int cnt =1;
+        for (int i=0;i<s.size();i++)
+        {
+            if (s[i]>='A' && s[i] <='Z')
+                cnt++;
+        }
+        if (cnt<=7)
+            cout<<"YES\n";
+        else
+            cout<<"NO\n";
+    }
+
+
+
+    return 0;
+}

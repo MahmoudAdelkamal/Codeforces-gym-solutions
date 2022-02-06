@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+const int N=1e5+5;
+int main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        map<int,pair<int,int>>mp;
+        int n,m,q,a[N] = {},vis[N] = {};
+        cin>>n>>m>>q;
+        for(int i=0;i<n;i++)
+        {
+            int l,r;
+            cin>>l>>r;
+            a[l]++;
+            a[r+1]--;
+        }
+        for(int i=1;i<=m;i++)
+            a[i]+=a[i-1];
+        int l = -1,r = -1,sz = 0;
+        for(int i=m;i>=1;i--)
+        {
+            if(!sz && a[i]==0)
+            {
+                r = i;
+                l = i;
+                sz++;
+                if(!vis[sz])
+                {
+                   vis[sz] = 1;
+                   mp[sz] = {l,r};
+                }
+            }
+            else if(sz>0 && a[i]==0)
+            {
+                l = i;
+                sz++;
+                if(!vis[sz])
+                {
+                   vis[sz] = 1;
+                   mp[sz] = {l,r};
+                }
+            }
+            else if(a[i]==1)
+            {
+                sz = 0;
+                r = -1;
+                l = -1;
+            }
+        }
+        while(q--)
+        {
+            int k;
+            cin>>k;
+            if(vis[k])
+                cout<<mp[k].first<<" "<<mp[k].second<<"\n";
+            else
+                cout<<-1<<" "<<-1<<"\n";
+        }
+    }
+    return 0;
+}

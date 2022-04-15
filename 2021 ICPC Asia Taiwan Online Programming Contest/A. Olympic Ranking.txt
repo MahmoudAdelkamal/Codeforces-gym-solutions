@@ -1,0 +1,33 @@
+#pragma GCC optimize ("O3")
+#include<bits/stdc++.h>
+typedef long long ll;
+#define pi pair<ll,ll>
+#define all(z) z.begin(),z.end()
+using namespace std;
+const int N = 3e3+5,mod = 1e9+9;
+void _(){
+    int n;
+    cin >> n;
+    vector<pair<pi,pair<int,string>>> v;
+    for (int i=0;i<n;i++){
+        int x , y , z;
+        string s;
+        char c;
+        cin >>x >> y >> z;
+        getline(cin,s);
+        v.push_back({{x,y},{z,s}});
+    }
+    sort(v.begin(),v.end());
+    cout << (v[n-1].second.second).substr(1,(v[n-1].second.second).size()-1);
+
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int q = 1;
+    //cin >> q;
+    while(q--)_();
+    return 0;
+}

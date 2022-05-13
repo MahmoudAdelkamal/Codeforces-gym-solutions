@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+#include <list>
+
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define ll long long
+#define ld long double
+#define el "\n"
+
+using namespace std;
+const int N=2e5+7;
+const int mod = 1e9 + 7;
+int dx[] = {0, -1, 0, 1, -1, 1, -1, 1};
+int dy[] = {-1, 0, 1, 0, 1, -1, -1, 1};
+ll n,c,k;
+int arr[N];
+vector<int>adj[N];
+priority_queue<int>pq[N];
+void dfs(int node,int par)
+{
+    if (adj[node].size()==0)
+    {
+        pq[node].push(1);
+        return;
+    }
+    for (auto j:adj[node])
+    {
+        if (j==par)
+        {
+            continue;
+        }
+        dfs(j,node);
+        int cnt=0;
+        while(pq[j].size())
+        {
+            pq[node].push(pq[j].top());
+            pq[j].pop();
+        }
+    }
+    int key=pq[node].top();
+    pq[node].pop();
+    pq[node].push(key+1);
+}
+void dowork()
+{
+    cin>>n>>k;
+    for (int i=2;i<=n;i++)
+    {
+        cin>>arr[i];
+        adj[arr[i]].push_back(i);
+    }
+    dfs(1,1);
+    //cout<<pq[1].size()<<el;
+//    while(pq[1].size())
+//    {
+//        cout<<pq[1].top()<<el;
+//        pq[1].pop();
+//    }
+//    return;
+    int ans=0;
+    while(k&&pq[1].size())
+    {
+        ans+=pq[1].top();
+        pq[1].pop();
+        k--;
+    }
+    cout<<ans<<el;
+}
+int main()
+{
+    fast
+    //freopen("tour.in", "r", stdin);
+    int t;
+    t=1;
+    //cin>>t;
+    while (t--)
+    {
+        dowork();
+    }
+}

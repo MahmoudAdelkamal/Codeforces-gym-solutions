@@ -1,0 +1,111 @@
+#include<bits/stdc++.h>
+#include <list>
+
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define ll long long
+#define ld long double
+#define el "\n"
+
+using namespace std;
+const int N=2e5+7;
+const int mod = 1e9 + 7;
+int dx[] = {0, -1, 0, 1, -1, 1, -1, 1};
+int dy[] = {-1, 0, 1, 0, 1, -1, -1, 1};
+ll n,m,k,p,x,y,l,r,a,b,c,t;
+ll arr[N];
+/*int solve(ll can,ll sum)
+{
+    ll ans =0;
+    can=(sum+c-1)/c;
+    ll cur=0;
+    int j=0;
+    ll rem=c-1;
+    for (int i=0;i<n;)
+    {
+        cur=0;
+        //cout<<i<<el;
+        while(j<n&&cur<=can)
+        {
+            cur+=arr[j];
+            sum-=arr[j];
+            j++;
+        }
+        if (rem>=1)
+        {
+            cout<<i<<el;
+            can=(sum+rem-1)/rem;
+            rem--;
+        }
+        else
+        {
+            rem--;
+        }
+        ans=max(ans,(cur+t-1)/t);
+        i=j;
+        // cout<<i<<" "<<j<<el;
+    }
+    cout<<ans<<el;
+}
+ */
+int calc(ll sum)
+{
+    return (sum+t-1)/t;
+}
+bool valid(int mid)
+{
+    int j=0,cnt=0;
+    ll cur=0;
+    for (int i=0;i<n;)
+    {
+        cur=0;
+        int lst=j;
+        cnt++;
+        while(j<n&&calc(cur+arr[j])<=mid)
+        {
+            cur+=arr[j];
+            j++;
+            i++;
+        }
+        if (lst==j)
+        {
+            return 0;
+        }
+    }
+    return cnt<=c;
+}
+
+void dowork()
+{
+    cin>>n>>c>>t;
+    ll ans=-1;
+    ll sum=0;
+    for (int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int low = 1,high = 1e9;
+    while (low<=high)
+    {
+        int mid = (low+high)/2;
+        if(valid(mid))
+        {
+            ans = mid;
+            high = mid-1;
+        }
+        else
+            low = mid+1;
+    }
+    cout<<ans<<el;
+}
+int main()
+{
+    fast
+    //freopen("tour.in", "r", stdin);
+    int t;
+    t=1;
+    //cin>>t;
+    while (t--)
+    {
+        dowork();
+    }
+}

@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+#include <list>
+
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define ll long long
+#define ld long double
+#define el "\n"
+
+using namespace std;
+const int N=2e5+7;
+const int mod = 1e9 + 7;
+int dx[] = {0, -1, 0, 1, -1, 1, -1, 1};
+int dy[] = {-1, 0, 1, 0, 1, -1, -1, 1};
+
+int main()
+{
+    fast
+    //freopen("tour.in", "r", stdin);
+    int t;
+    t=1;
+    //cin>>t;
+    while (t--)
+    {
+        ll n,temp;
+        cin>>n;
+        ll ans=1;
+        temp=n;
+        for(;temp;ans<<=1){
+            temp-=((temp)&(-temp));
+        }
+        cout<<ans<<"\n";
+    }
+}

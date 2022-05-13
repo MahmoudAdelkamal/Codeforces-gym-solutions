@@ -1,0 +1,123 @@
+#include<bits/stdc++.h>
+#include <list>
+
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define ll long long
+#define ld long double
+#define el "\n"
+
+using namespace std;
+const int N=2e5+7;
+const int mod = 1e9 + 7;
+int dx[] = {0, -1, 0, 1, -1, 1, -1, 1};
+int dy[] = {-1, 0, 1, 0, 1, -1, -1, 1};
+ll n,m,k,p,x,y,l,r,a,b,c,t;
+int par[N],sz[N];
+struct point
+{
+    ll x,y,r;
+};
+point sensors[1005];
+int find_par(int u)
+{
+    if(u==par[u])
+    {
+        return u;
+    }
+    return par[u]=find_par(par[u]);
+}
+void merge(int u, int v)
+{
+    u=find_par(u);
+    v=find_par(v);
+    if (u==v)
+    {
+        return;
+    }
+    if (sz[u]<sz[v])
+    {
+        swap(u,v);
+    }
+    par[v]=u;
+    if (sz[u]==sz[v])
+    {
+        sz[u]++;
+    }
+}
+ll dis(int i,int j)
+{
+
+}
+bool conn(int i,int j)
+{
+    ll difx=sensors[i].x-sensors[j].x;
+    difx*=difx;
+    ll dify=sensors[i].y-sensors[j].y;
+    dify*=dify;
+    return difx+dify<=(sensors[i].r+sensors[j].r)*(sensors[i].r+sensors[j].r);
+}
+void dowork()
+{
+    cin>>n>>m>>k;
+    for (int i=1;i<=k;i++)
+    {
+        ll a,b,c;
+        cin>>a>>b>>c;
+        sensors[i]={a,b,c};
+    }
+    for (int i=1;i<=k;i++)
+    {
+        par[i]=i;
+        sz[i]=1;
+    }
+    for (int i=1;i<=k;i++)
+    {
+        for (int j=i+1;j<=k;j++)
+        {
+            if (conn(i,j))
+            {
+                merge(i,j);
+            }
+        }
+    }
+    for (int i=1;i<=k;i++)
+    {
+        for (int j=1;j<=k;j++)
+        {
+            int u= find_par(i),v= find_par(j);
+            if (sensors[i].x<=sensors[i].r&&sensors[j].y<=sensors[j].r&&u==v)
+            {
+                cout<<"N"<<el;
+                return;
+            }
+            if (sensors[i].x+sensors[i].r>=n&&sensors[j].y+sensors[j].r>=m&&u==v)
+            {
+                cout<<"N"<<el;
+                return;
+            }
+            if (sensors[i].x+sensors[i].r>=n&&sensors[j].x<=sensors[j].r&&u==v)
+            {
+                cout<<"N"<<el;
+                return;
+            }
+            if (sensors[i].y+sensors[i].r>=m&&sensors[j].y<=sensors[j].r&&u==v)
+            {
+                cout<<"N"<<el;
+                return;
+            }
+        }
+    }
+    cout<<"S"<<el;
+}
+int main()
+{
+    fast
+    //freopen("tour.in", "r", stdin);
+    int t;
+    t=1;
+    //cin>>t;
+    while (t--)
+    {
+        dowork();
+    }
+}

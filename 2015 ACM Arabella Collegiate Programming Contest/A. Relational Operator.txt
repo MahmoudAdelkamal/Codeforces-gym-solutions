@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+const int N=1e5+5;
+int main()
+{
+    string sign;
+    ll t,a,b;
+    cin>>t;
+    while(t--){
+        cin>>a>>sign>>b;
+        if(sign=="!="){
+            if(a!=b)
+                cout<<"true"<<endl;
+            else
+                cout<<"false"<<endl;
+        }
+        else if(sign=="=="){
+            if(a==b)
+                cout<<"true"<<endl;
+            else
+                cout<<"false"<<endl;
+        }
+        else if(sign=="<"){
+            if(a<b)
+                cout<<"true"<<endl;
+            else
+                cout<<"false"<<endl;
+        }
+        else if(sign=="<="){
+            if(a<=b)
+                cout<<"true"<<endl;
+            else
+                cout<<"false"<<endl;
+        }
+        else if(sign==">"){
+            if(a>b)
+                cout<<"true"<<endl;
+            else
+                cout<<"false"<<endl;
+        }
+        else if(sign==">="){
+            if(a>=b)
+                cout<<"true"<<endl;
+            else
+                cout<<"false"<<endl;
+        }
+    }
+
+  return 0;
+}

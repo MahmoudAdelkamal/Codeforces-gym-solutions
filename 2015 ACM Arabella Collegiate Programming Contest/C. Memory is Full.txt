@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+const int N=1e5+5;
+int main()
+{
+    ll t;
+    cin>>t;
+    while (t--)
+    {
+	ll k,m,n,c=0,sum=0,arr[105];
+	cin >> k >> m >> n;
+	for(ll i=0;i<n;i++)
+    	   cin >>arr[i];
+	sort(arr,arr+n);
+	sum+=m;
+	while(sum+arr[c]<=k)
+	{
+            sum+=arr[c];
+    	    c++;
+	}
+	cout << n-c << endl;
+    }
+  return 0;
+}

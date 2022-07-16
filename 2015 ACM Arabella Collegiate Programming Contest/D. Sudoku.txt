@@ -1,0 +1,226 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+const int N=1e5+5;
+map<char,bool>vis;
+char arr[20][20];
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--){
+        bool valid=1;
+
+        for(ll i=0;i<9;i++)
+        {
+            for(ll j =0;j<9;j++)
+            cin >> arr[i][j];
+        }
+
+        for(ll i=0;i<9;i++)
+        {
+            for(ll j =0;j<9;j++)
+            {
+                vis[arr[i][j]]=1;
+            }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+            vis.clear();
+        }
+vis.clear();
+//////////////////////////////////////////////////////
+
+        for(ll i=0;i<9;i++)
+        {
+            for(ll j =0;j<9;j++)
+            {
+                vis[arr[j][i]]=1;
+            }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+            vis.clear();
+        }
+        vis.clear();
+        /////////////////////////////////////////////////////
+
+
+
+        for(int i=0;i<=2;i++){
+           for(int j=0;j<=2;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+                /////////////////////////////////////////////////////
+
+
+        for(int i=0;i<=2;i++){
+           for(int j=3;j<=5;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+         /////////////////////////////////////////////////////
+
+
+        for(int i=0;i<=2;i++){
+           for(int j=6;j<=8;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+         /////////////////////////////////////////////////////
+
+
+        for(int i=3;i<=5;i++){
+           for(int j=0;j<=2;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+            /////////////////////////////////////////////////////
+
+
+        for(int i=3;i<=5;i++){
+           for(int j=3;j<=5;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+         /////////////////////////////////////////////////////
+
+
+        for(int i=3;i<=5;i++){
+           for(int j=6;j<=8;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+         /////////////////////////////////////////////////////
+
+
+        for(int i=6;i<=8;i++){
+           for(int j=0;j<=2;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+             /////////////////////////////////////////////////////
+
+
+        for(int i=6;i<=8;i++){
+           for(int j=3;j<=5;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+                /////////////////////////////////////////////////////
+
+
+        for(int i=6;i<=8;i++){
+           for(int j=6;j<=8;j++){
+                 vis[arr[i][j]]=1;
+             }
+          }
+
+           for(char j ='1';j<='9';j++)
+            {
+                if (!vis[j]) {
+                    valid=0;
+                }
+            }
+
+
+        vis.clear();
+
+
+        if(!valid)
+            cout<<"Invalid" <<endl;
+        else
+            cout << "Valid" <<endl;
+
+   }
+  return 0;
+}

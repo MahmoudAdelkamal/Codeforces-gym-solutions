@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N = 1e5+5;
+const int mod = 1e9+7;
+ll fp(ll base, ll exp)
+{
+    if (exp == 0)
+        return 1;
+    ll ans = fp(base, exp / 2);
+    ans = (ans * ans) % mod;
+    if (exp % 2 != 0)
+        ans = (ans * (base % mod)) % mod;
+    return ans;
+}
+int par[N], sz[N], arr[N];
+string s;
+int Find(int u) {
+    if (par[u] != u) par[u] = Find(par[u]);
+    return par[u];
+}
+
+void connect(int u, int v)
+{
+    u = Find(u);
+    v = Find(v);
+    if(u==v)
+        return;
+    if(s[u]=='?' && s[v]!='?')
+        par[u] = v,sz[v]+=sz[u];
+    else
+        par[v] = u,sz[u]+=sz[v];
+}
+
+void init() {
+    for (int i = 0; i < N; i++)
+        par[i] = i, sz[i] = 1;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        init();
+        bool valid = 1;
+        int n,m;
+        cin>>n>>m>>s;
+        for(int i=0;i<m;i++)
+        {
+            int u,v;
+            cin>>u>>v;
+            u--,v--;
+            connect(u,v);
+        }
+        for(int i=0;i<n/2;i++)
+            connect(i,n-i-1);
+        ll cnt = 0;
+        map<int,bool>vis;
+        for(int i=0;i<n;i++)
+        {
+            // parent of the component
+            ll idx = Find(i);
+            if(s[idx]=='?' && !vis[idx])
+            {
+                vis[idx] = 1;
+                cnt++;
+            }
+            else if(s[idx]!='?' && s[i]!='?' && s[i]!=s[idx])
+                valid = 0;
+        }
+        if(!valid)
+            cout<<0<<endl;
+        else
+            cout<<fp(26,cnt)<<endl;
+    }
+    return 0;
+}
